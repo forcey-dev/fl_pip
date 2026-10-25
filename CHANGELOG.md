@@ -1,3 +1,7 @@
+## 3.2.4
+
+* Security: raise minimum SDK to Dart `3.13.7` / Flutter `3.47.8` to require the patched SDK for [GHSA-frr6-h895-5pxp](https://github.com/dart-lang/sdk/security/advisories/GHSA-frr6-h895-5pxp) (TLS MitM via compromised eMudhra intermediate CAs on Android, Windows and Linux)
+
 ## 3.2.3
 
 * Merge pull request [35](https://github.com/Wayaer/fl_pip/pull/35)
