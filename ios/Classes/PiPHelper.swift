@@ -193,15 +193,9 @@ class PiPHelper: NSObject, AVPictureInPictureControllerDelegate {
             let rootController = rootWindow!.rootViewController
             let flController = (rootController as! FlutterViewController)
             
-            // FIX 1: Access engine as an optional
             let engine = flController.engine
-            
-            // FIX 2: Use optional chaining to set viewController to nil
-            engine?.viewController = nil
-            
-            // FIX 3: Force unwrap 'engine' when passing to the new constructor
-            // because the constructor expects a non-optional FlutterEngine
-            let newController = FlutterViewController(engine: engine!, nibName: flController.nibName, bundle: flController.nibBundle)
+            engine.viewController = nil
+            let newController = FlutterViewController(engine: engine, nibName: flController.nibName, bundle: flController.nibBundle)
             
             flController.dismiss(animated: true)
             newController.view.frame = rect
@@ -238,12 +232,8 @@ class PiPHelper: NSObject, AVPictureInPictureControllerDelegate {
             
             if let flController = firstWindow?.rootViewController as? FlutterViewController {
                 let engine = flController.engine
-                
-                // FIX: Optional chaining
-                engine?.viewController = nil
-                
-                // FIX: Force unwrap engine! for the new controller
-                let newController = FlutterViewController(engine: engine!, nibName: flController.nibName, bundle: flController.nibBundle)
+                engine.viewController = nil
+                let newController = FlutterViewController(engine: engine, nibName: flController.nibName, bundle: flController.nibBundle)
                 
                 flController.dismiss(animated: true)
                 firstWindow?.rootViewController = nil
